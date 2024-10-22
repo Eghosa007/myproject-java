@@ -3,7 +3,9 @@ package com.myproject.java._Punch_Clock_System;
 import com.myproject.java._Punch_Clock_System.FileHandler;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.Date;
 
 public class PunchClockSystem {
     public static void main(String[] args) {
@@ -105,7 +107,7 @@ public class PunchClockSystem {
     private static void handleClockIn(String role) {
         Employee employee = getEmployee(role);
         if (employee != null) {
-            AttendanceManager.clockIn(employee);
+            logAttendance(employee, "ClockInTime");
         } else {
             System.out.println("Employee not found or role mismatch.");
         }
@@ -114,7 +116,7 @@ public class PunchClockSystem {
     private static void handleClockOut(String role) {
         Employee employee = getEmployee(role);
         if (employee != null) {
-            AttendanceManager.clockOut(employee);
+            logAttendance(employee, "ClockOutTime");
         } else {
             System.out.println("Employee not found or role mismatch.");
         }
@@ -124,15 +126,46 @@ public class PunchClockSystem {
     private static Employee getEmployee(String role) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your ID: ");
-        String employeeID = scanner.nextLine();
+        String inputEmployeeID = scanner.nextLine();
 
         // Search through the loaded employees
         for (Employee employee : FileHandler.getEmployees()) {
-            if (employee.getEmployeeID().equals(employeeID) && employee.getRole().equals(role)) {
-                return employee; // Return the matching employee if ID and role match
+            // Use equalsIgnoreCase to make the ID comparison case-insensitive
+            if (employee.getEmployeeID().equalsIgnoreCase(inputEmployeeID) && employee.getRole().equals(role)) {
+                return employee; // Return the matching employee if ID (case-insensitive) and role match
             }
         }
 
         return null; // Return null if no matching employee is found
     }
+
+
+ // Log attendance (ClockInTime or ClockOutTime) for the given employee
+    private static void logAttendance(Employee employee, String eventType) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("attendance.txt", true))) {
+            String fullName = employee.getFirstName() + " " + employee.getLastName();
+            String department = employee.getDepartment();
+            String employeeID = employee.getEmployeeID();
+
+            // Get the current timestamp
+            String timestamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+
+            // Log format: EMPID,FullName,Department,EventType,Timestamp
+            String logEntry = employeeID + "," + fullName + "," + department + "," + eventType + "," + timestamp;
+
+            // Write the log entry to the attendance.txt file
+            writer.write(logEntry);
+            writer.newLine();
+
+            // Display friendly message to the user
+            if (eventType.equals("ClockInTime")) {
+                System.out.println(fullName + " has successfully clocked in.");
+            } else if (eventType.equals("ClockOutTime")) {
+                System.out.println(fullName + " has successfully clocked out.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error logging attendance: " + e.getMessage());
+        }
+    }
+    
 }
