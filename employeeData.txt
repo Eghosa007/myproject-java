@@ -1,0 +1,8 @@
+John,Doe,EMP001,Management,HR
+Jane,Smith,EMP002,Employee,Finance
+Bob,Johnson,EMP003,Contractor,IT
+Alice,White,EMP004,Employee,Sales
+Charlie,Brown,EMP005,Contractor,Marketing
+David,Clark,EMP006,Management,Operations
+Eva,Johnson,EMP007,Employee,Engineering
+Frank,Stone,EMP008,Contractor,HR
