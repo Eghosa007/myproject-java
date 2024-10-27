@@ -11,17 +11,14 @@ import java.util.Date;
 public class PunchClockSystem {
     public static void main(String[] args) {
 
-    	
-        FileHandler.loadEmployeesFromFile(); // Load employee data at the start
+    	// Load employee data at the start
+        FileHandler.loadEmployeesFromFile(); 
         
-
+       //Initializes a Scanner object to read user input.
         Scanner scanner = new Scanner(System.in);
         boolean runApp = true;
         
-        // Rest of the main method
-  
-          
-        
+        // Do while loop to display the menu until the user exits
 
         do {
             printMainMenu();

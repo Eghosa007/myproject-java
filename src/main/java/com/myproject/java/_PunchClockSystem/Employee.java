@@ -67,10 +67,4 @@ public class Employee {
         this.department = department;
     }
 
-
-    @Override
-    public String toString() {
-        return "Employee [FirstName,LastName,EmployeeID,Role,Department\r\n"
-        		+ "]";
-    }
 }
