@@ -1,4 +1,4 @@
-package com.myproject.java._Punch_Clock_System;
+package com.myproject.java._PunchClockSystem;
 
 import java.io.*;
 import java.util.*;

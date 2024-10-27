@@ -1,4 +1,4 @@
-package com.myproject.java._Punch_Clock_System;
+package com.myproject.java._PunchClockSystem;
 
 public class Employee {
     private String employeeID;
@@ -65,5 +65,12 @@ public class Employee {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Employee [FirstName,LastName,EmployeeID,Role,Department\r\n"
+        		+ "]";
     }
 }

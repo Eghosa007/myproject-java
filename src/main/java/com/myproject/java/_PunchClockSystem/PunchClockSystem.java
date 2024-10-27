@@ -1,18 +1,27 @@
-package com.myproject.java._Punch_Clock_System;
-
-import com.myproject.java._Punch_Clock_System.FileHandler;
+package com.myproject.java._PunchClockSystem;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+
+import com.myproject.java._PunchClockSystem.FileHandler;
+
 import java.util.Date;
 
 public class PunchClockSystem {
     public static void main(String[] args) {
+
+    	
         FileHandler.loadEmployeesFromFile(); // Load employee data at the start
+        
 
         Scanner scanner = new Scanner(System.in);
         boolean runApp = true;
+        
+        // Rest of the main method
+  
+          
+        
 
         do {
             printMainMenu();
@@ -34,12 +43,23 @@ public class PunchClockSystem {
             } catch (NumberFormatException e) {
                 System.out.println("Error: Please enter a valid number.");
             }
+        
         } while (runApp);
-
+        
         scanner.close(); // Ensure the scanner is closed
     }
+  
+    private static RoleMessage getRoleMessage(String role) {
+        switch (role) {
+            case "Contractor":
+                return new ContractorMessage("2025-12-31"); // Sample contract end date
+            default:
+                return new RoleMessage();
+        }
+    }
+    
 
-    private static void printMainMenu() {
+    public static void printMainMenu() {
         System.out.println("============= Punch Clock Main Menu ============");
         System.out.println("1. Management Menu");
         System.out.println("2. Employee Menu");
@@ -108,10 +128,16 @@ public class PunchClockSystem {
         Employee employee = getEmployee(role);
         if (employee != null) {
             logAttendance(employee, "ClockInTime");
+            if (role.equals("Contractor")) {
+                // Display the contractor message only after successful clock-in
+                System.out.println("Contractor: Your contract expires on 2025-12-31.");
+            }
         } else {
             System.out.println("Employee not found or role mismatch.");
         }
-    }
+       }
+     
+    
 
     private static void handleClockOut(String role) {
         Employee employee = getEmployee(role);
@@ -169,3 +195,5 @@ public class PunchClockSystem {
     }
     
 }
+ 	 
+

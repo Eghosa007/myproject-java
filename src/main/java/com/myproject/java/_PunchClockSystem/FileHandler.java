@@ -1,12 +1,10 @@
-package com.myproject.java._Punch_Clock_System;
-
-import com.myproject.java._Punch_Clock_System.FileHandler;
-
-
+package com.myproject.java._PunchClockSystem;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.myproject.java._PunchClockSystem.FileHandler;
 
 public class FileHandler {
     private static final String EMPLOYEE_FILE = "employeeData.txt";
