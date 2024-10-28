@@ -85,3 +85,7 @@ EMP001,John Doe,HR,ClockOutTime,2024/10/27 21:41:39
 EMP001,John Doe,HR,ClockInTime,2024/10/27 22:38:26
 EMP001,John Doe,HR,ClockOutTime,2024/10/27 22:38:36
 EMP003,Bob Johnson,IT,ClockInTime,2024/10/27 22:38:57
+EMP001,John Doe,HR,ClockInTime,2024/10/27 23:34:52
+EMP001,John Doe,HR,ClockOutTime,2024/10/27 23:35:09
+EMP003,Bob Johnson,IT,ClockInTime,2024/10/27 23:35:57
+EMP003,Bob Johnson,IT,ClockOutTime,2024/10/27 23:36:15
