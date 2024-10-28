@@ -8,7 +8,7 @@ import com.myproject.java._PunchClockSystem.FileHandler;
 
 import java.util.Date;
 
-public class PunchClockSystem {
+public class PunchClockSystem extends Color{
     public static void main(String[] args) {
 
     	// Load employee data at the start
@@ -31,14 +31,14 @@ public class PunchClockSystem {
                     case 2 -> employeeMenu(scanner);
                     case 3 -> contractorMenu(scanner);
                     case 0 -> {
-                        System.out.println("Exiting system... Goodbye!");
+                        System.out.println(BLUE + "Exiting system... Goodbye!" + RESET);
                         runApp = false;
                         FileHandler.updateEmployeeFile(); // Update employee file before exit
                     }
-                    default -> System.out.println("Invalid choice. Please try again.");
+                    default -> System.out.println(RED + "Invalid choice. Please try again." + RESET);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Error: Please enter a valid number.");
+                System.out.println(RED + "Error: Please enter a valid number." + RESET);
             }
         
         } while (runApp);
@@ -49,7 +49,7 @@ public class PunchClockSystem {
     private static RoleMessage getRoleMessage(String role) {
         switch (role) {
             case "Contractor":
-                return new ContractorMessage("2025-12-31"); // Sample contract end date
+                return new ContractorMessage("2025-12-31"); // contract end date message
             default:
                 return new RoleMessage();
         }
@@ -57,20 +57,20 @@ public class PunchClockSystem {
     
 
     public static void printMainMenu() {
-        System.out.println("============= Punch Clock Main Menu ============");
-        System.out.println("1. Management Menu");
-        System.out.println("2. Employee Menu");
-        System.out.println("3. Contractor Menu");
-        System.out.println("0. Exit");
+        System.out.println(PURPLE + "============= Punch Clock Main Menu ============" + RESET);
+        System.out.println(BLUE + "1. Management Menu" + RESET);
+        System.out.println(BLUE + "2. Employee Menu" + RESET);
+        System.out.println(BLUE + "3. Contractor Menu" + RESET);
+        System.out.println(RED + "0. Exit" + RESET);
     }
 
     private static void managementMenu(Scanner scanner) {
         boolean inManagementMenu = true;
         do {
-            System.out.println("============= Management Menu ============");
-            System.out.println("1. Clock-In");
-            System.out.println("2. Clock-Out");
-            System.out.println("0. Exit to Main Menu");
+            System.out.println(PURPLE + "============= Management Menu ============" + RESET);
+            System.out.println(BLUE + "1. Clock-In" + RESET);
+            System.out.println(BLUE + "2. Clock-Out" + RESET);
+            System.out.println(RED + "0. Exit to Main Menu" + RESET);
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -78,7 +78,7 @@ public class PunchClockSystem {
                 case 1 -> handleClockIn("Management");
                 case 2 -> handleClockOut("Management");
                 case 0 -> inManagementMenu = false;
-                default -> System.out.println("Invalid choice. Please try again.");
+                default -> System.out.println(RED + "Invalid choice. Please try again." + RESET);
             }
         } while (inManagementMenu);
     }
@@ -86,10 +86,10 @@ public class PunchClockSystem {
     private static void employeeMenu(Scanner scanner) {
         boolean inEmployeeMenu = true;
         do {
-            System.out.println("============= Employee Menu ============");
-            System.out.println("1. Clock-In");
-            System.out.println("2. Clock-Out");
-            System.out.println("0. Exit to Main Menu");
+            System.out.println(PURPLE + "============= Employee Menu ============" + RESET);
+            System.out.println(BLUE + "1. Clock-In" + RESET);
+            System.out.println(BLUE + "2. Clock-Out" + RESET);
+            System.out.println(RED + "0. Exit to Main Menu" + RESET);
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -97,7 +97,7 @@ public class PunchClockSystem {
                 case 1 -> handleClockIn("Employee");
                 case 2 -> handleClockOut("Employee");
                 case 0 -> inEmployeeMenu = false;
-                default -> System.out.println("Invalid choice. Please try again.");
+                default -> System.out.println(RED + "Invalid choice. Please try again." + RESET);
             }
         } while (inEmployeeMenu);
     }
@@ -105,10 +105,10 @@ public class PunchClockSystem {
     private static void contractorMenu(Scanner scanner) {
         boolean inContractorMenu = true;
         do {
-            System.out.println("============= Contractor Menu ============");
-            System.out.println("1. Clock-In");
-            System.out.println("2. Clock-Out");
-            System.out.println("0. Exit to Main Menu");
+            System.out.println(PURPLE + "============= Contractor Menu ============" + RESET);
+            System.out.println(BLUE + "1. Clock-In"+ RESET);
+            System.out.println(BLUE + "2. Clock-Out" + RESET);
+            System.out.println(RED + "0. Exit to Main Menu" + RESET);
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -116,7 +116,7 @@ public class PunchClockSystem {
                 case 1 -> handleClockIn("Contractor");
                 case 2 -> handleClockOut("Contractor");
                 case 0 -> inContractorMenu = false;
-                default -> System.out.println("Invalid choice. Please try again.");
+                default -> System.out.println(RED + "Invalid choice. Please try again." + RESET);
             }
         } while (inContractorMenu);
     }
@@ -127,10 +127,10 @@ public class PunchClockSystem {
             logAttendance(employee, "ClockInTime");
             if (role.equals("Contractor")) {
                 // Display the contractor message only after successful clock-in
-                System.out.println("Contractor: Your contract expires on 2025-12-31.");
+                System.out.println(YELLOW + "Contractor: Your contract expires on 2025-12-31." + RESET);
             }
         } else {
-            System.out.println("Employee not found or role mismatch.");
+            System.out.println(RED + "Employee not found or role mismatch." + RESET);
         }
        }
      
@@ -141,7 +141,7 @@ public class PunchClockSystem {
         if (employee != null) {
             logAttendance(employee, "ClockOutTime");
         } else {
-            System.out.println("Employee not found or role mismatch.");
+            System.out.println(RED + "Employee not found or role mismatch." + RESET);
         }
     }
 
@@ -182,15 +182,13 @@ public class PunchClockSystem {
 
             // Display friendly message to the user
             if (eventType.equals("ClockInTime")) {
-                System.out.println(fullName + " has successfully clocked in.");
+                System.out.println(GREEN + fullName + " has successfully clocked in." + RESET);
             } else if (eventType.equals("ClockOutTime")) {
-                System.out.println(fullName + " has successfully clocked out.");
+                System.out.println(GREEN + fullName + " has successfully clocked out." + RESET);
             }
         } catch (IOException e) {
-            System.out.println("Error logging attendance: " + e.getMessage());
+            System.out.println(RED + "Error logging attendance: " + e.getMessage() + RESET);
         }
     }
     
 }
- 	 
-

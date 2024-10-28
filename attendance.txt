@@ -69,3 +69,16 @@ EMP006,David Clark,Operations,ClockInTime,2024/10/26 21:38:29
 EMP006,David Clark,Operations,ClockOutTime,2024/10/26 21:38:55
 EMP001,John Doe,HR,ClockInTime,2024/10/27 02:01:55
 EMP001,John Doe,HR,ClockOutTime,2024/10/27 02:02:07
+EMP003,Bob Johnson,IT,ClockInTime,2024/10/27 16:33:43
+EMP003,Bob Johnson,IT,ClockOutTime,2024/10/27 16:34:07
+EMP001,John Doe,HR,ClockInTime,2024/10/27 16:34:32
+EMP001,John Doe,HR,ClockOutTime,2024/10/27 16:34:52
+EMP001,John Doe,HR,ClockInTime,2024/10/27 21:21:02
+EMP001,John Doe,HR,ClockInTime,2024/10/27 21:21:33
+EMP001,John Doe,HR,ClockInTime,2024/10/27 21:23:20
+EMP003,Bob Johnson,IT,ClockInTime,2024/10/27 21:23:56
+EMP001,John Doe,HR,ClockInTime,2024/10/27 21:39:19
+EMP001,John Doe,HR,ClockOutTime,2024/10/27 21:39:33
+EMP003,Bob Johnson,IT,ClockInTime,2024/10/27 21:39:52
+EMP003,Bob Johnson,IT,ClockOutTime,2024/10/27 21:40:34
+EMP001,John Doe,HR,ClockOutTime,2024/10/27 21:41:39

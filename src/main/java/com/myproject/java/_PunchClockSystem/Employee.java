@@ -1,6 +1,6 @@
 package com.myproject.java._PunchClockSystem;
 
-public class Employee {
+public class Employee extends Color {
     private String employeeID;
     private String firstName;
     private String lastName;
@@ -43,7 +43,7 @@ public class Employee {
 
     // Method to get the full name of the employee
     public String getFullName() {
-        return firstName + " " + lastName; // Concatenate first and last name
+        return GREEN + firstName + " " + lastName + RESET; // Concatenate first and last name
     }
 
     // Setter methods if needed
