@@ -8,7 +8,7 @@ class PunchClockSystemTest {
 
     @BeforeEach
     void setUp() {
-        // Ensure employee data is loaded before each test
+        // Ensures employee data is loaded before each test
         FileHandler.loadEmployeesFromFile();
     }
 

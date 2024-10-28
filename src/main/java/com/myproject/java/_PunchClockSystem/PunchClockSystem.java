@@ -42,10 +42,11 @@ public class PunchClockSystem extends Color{
             }
         
         } while (runApp);
-        
-        scanner.close(); // Ensure the scanner is closed
+       
+     // scanner is closed
+        scanner.close();
     }
-  
+  //Retrieves a role-specific message for a given role.
     private static RoleMessage getRoleMessage(String role) {
         switch (role) {
             case "Contractor":
@@ -55,7 +56,7 @@ public class PunchClockSystem extends Color{
         }
     }
     
-
+    //Prints the main menu options for users to select from.
     public static void printMainMenu() {
         System.out.println(PURPLE + "============= Punch Clock Main Menu ============" + RESET);
         System.out.println(BLUE + "1. Management Menu" + RESET);
@@ -63,7 +64,9 @@ public class PunchClockSystem extends Color{
         System.out.println(BLUE + "3. Contractor Menu" + RESET);
         System.out.println(RED + "0. Exit" + RESET);
     }
-
+    
+    
+    //Displays the Management menu and handles clock-in and clock-out options for management staff.
     private static void managementMenu(Scanner scanner) {
         boolean inManagementMenu = true;
         do {
@@ -74,6 +77,7 @@ public class PunchClockSystem extends Color{
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
+         // Handle management-specific clock-in and clock-out options
             switch (choice) {
                 case 1 -> handleClockIn("Management");
                 case 2 -> handleClockOut("Management");
@@ -83,6 +87,7 @@ public class PunchClockSystem extends Color{
         } while (inManagementMenu);
     }
 
+    //Displays the Employee menu and handles clock-in and clock-out options for employees.
     private static void employeeMenu(Scanner scanner) {
         boolean inEmployeeMenu = true;
         do {
@@ -93,6 +98,7 @@ public class PunchClockSystem extends Color{
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
+            // Handle employee-specific clock-in and clock-out options
             switch (choice) {
                 case 1 -> handleClockIn("Employee");
                 case 2 -> handleClockOut("Employee");
@@ -101,7 +107,8 @@ public class PunchClockSystem extends Color{
             }
         } while (inEmployeeMenu);
     }
-
+    
+    //Displays the Contractor menu and handles clock-in and clock-out options for contractors.
     private static void contractorMenu(Scanner scanner) {
         boolean inContractorMenu = true;
         do {
@@ -112,6 +119,7 @@ public class PunchClockSystem extends Color{
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
+            // Handle contractor-specific clock-in and clock-out options
             switch (choice) {
                 case 1 -> handleClockIn("Contractor");
                 case 2 -> handleClockOut("Contractor");
@@ -121,6 +129,7 @@ public class PunchClockSystem extends Color{
         } while (inContractorMenu);
     }
 
+    //Handles the clock-in process for an employee based on their role.
     private static void handleClockIn(String role) {
         Employee employee = getEmployee(role);
         if (employee != null) {
@@ -135,7 +144,7 @@ public class PunchClockSystem extends Color{
        }
      
     
-
+//Handles the clock-out process for an employee based on their role.
     private static void handleClockOut(String role) {
         Employee employee = getEmployee(role);
         if (employee != null) {
@@ -158,8 +167,8 @@ public class PunchClockSystem extends Color{
                 return employee; // Return the matching employee if ID (case-insensitive) and role match
             }
         }
-
-        return null; // Return null if no matching employee is found
+     // Return null if no matching employee is found
+        return null; 
     }
 
 

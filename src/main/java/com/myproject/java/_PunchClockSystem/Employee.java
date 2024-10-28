@@ -46,7 +46,7 @@ public class Employee extends Color {
         return GREEN + firstName + " " + lastName + RESET; // Concatenate first and last name
     }
 
-    // Setter methods if needed
+    // Setter methods
     public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
